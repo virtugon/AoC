@@ -1,9 +1,8 @@
 maxRed = 12
 maxGreen = 13
 maxBlue = 14
-
-gameList = {}
 gameNumList = []
+
 with open("input.txt") as fo:
     for line in fo:
         addGame = True
