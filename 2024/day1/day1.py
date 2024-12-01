@@ -4,6 +4,7 @@ with open("input.txt") as file:
 left = []
 right = []
 diff = 0
+
 for line in lines:
     line = line.rstrip().split("   ")
     left.append(int(line[0]))
@@ -12,12 +13,9 @@ for line in lines:
 left.sort()
 right.sort()
 
-#  Part 1
-for i in range(len(left)):
-    if left[i] > right[i]:
-        diff += left[i] - right[i]
-    else:
-        diff += right[i] - left[i]
+#  Part 1 (optimized version)
+for l, r in zip(left, right):
+    diff += abs(l - r)
 
 # Part 2
 totalScore = []
