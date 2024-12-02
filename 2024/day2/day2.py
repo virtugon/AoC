@@ -7,7 +7,6 @@ for line in lines:
     safe = False
     direction = 0 # 0 = unset, 1 = increasing, 2 = decreasing
     dampener = False
-    print(line)
     for i in range(len(reports)-1):
         inc = 1
         if direction == 0:
@@ -21,17 +20,14 @@ for line in lines:
             if i < len(reports)-2:
                 inc = 2
             dampener = True
-            print("Dampener abs")
             
         if (direction == 1 and reports[i] > reports[i+1]) or (direction == 2 and reports[i] < reports[i+1]) or reports[i] == reports[i+1] and not dampener:
             if i < len(reports)-2:
                 inc = 2
             dampener = True
-            print("Dampener direction")
 
         # Process line
         if abs(reports[i]-reports[i+inc]) < 4:
-            print(f"{i} : {inc}")
             if (direction == 1 and reports[i] < reports[i+inc]):
                 safe = True
             elif (direction == 2 and reports[i] > reports[i+inc]):
@@ -44,9 +40,6 @@ for line in lines:
             break
     
     if safe:
-        print("SAFE!")
         safeReports += 1
-    else:
-        print("NOT SAFE!")
 
 print(safeReports)
