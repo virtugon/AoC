@@ -1,5 +1,3 @@
-import math
-
 with open("input.txt") as file:
     lines = file.readlines()
     lines = [line.rstrip() for line in lines]
@@ -21,10 +19,10 @@ for line in lines:
 # Match all rules against all lines and collect the correct lines in a list.
 for i in range(len(page_numbers)):
     update_status = 0
-    for j in range(len(ordering_rules)):
+    for j,h in ordering_rules:
         try:
-            a = page_numbers[i].index(ordering_rules[j][0])
-            b = page_numbers[i].index(ordering_rules[j][1])
+            a = page_numbers[i].index(j)
+            b = page_numbers[i].index(h)
             if a < b:
                 update_status += 1
         except:
@@ -34,7 +32,7 @@ for i in range(len(page_numbers)):
 
 # Find the middle page number
 for i in range(len(correct_updates)):
-    j = math.ceil(len(page_numbers[correct_updates[i]])/2)-1
+    j = len(page_numbers[correct_updates[i]])//2
     middle_numbers.append(page_numbers[correct_updates[i]][j])
 
 middle_numbers = list(map(int, middle_numbers))
